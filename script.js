@@ -17,13 +17,15 @@ function generatePassword() {
   var passLower = confirm("Do you want lowercase characters?");
   var passUpper = confirm("Do you want uppercase characters?");
   var passSpecial = confirm("Do you want special characters?");
-  if (!passLower && !passUpper && !passSpecial) {
+  var passNumerics = confirm("Do you want numeric characters?")
+  if (!passLower && !passUpper && !passSpecial && !passNumerics) {
     alert("Needs at least 1 criteria");
     return;
   }
-  var passUpperArray = ["A", "B", "C", "D"];
-  var passLowerArray = ["a", "b", "c", "d"];
-  var passSpecialArray = ["!", "@", "#", "$"];
+  var passUpperArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  var passLowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var passSpecialArray = ["!", "@", "#", "$", "%", "&", "^", "*", "(", ")", "_", "-", ",", ".", "<", ">", ";", "[", "]"];
+  var passNumericsArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var possibleCharacters = [];
   var chosenPassword = [];
   if (passLower) {
@@ -34,6 +36,9 @@ function generatePassword() {
   }
   if (passSpecial) {
     possibleCharacters = possibleCharacters.concat(passSpecialArray);
+  }
+  if (passNumerics) {
+    possibleCharacters = possibleCharacters.concat(passNumericsArray);
   }
   for (var i = 0; i <= passLength; i++) {
     var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
